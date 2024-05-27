@@ -36,18 +36,18 @@ export const userLogin = createAsyncThunk(
         },
       };
       // Make request to the backend
-      const { data } = await RestApi.post("/auth/user/login", formData, config);
-
+      const data  = await RestApi.post("/auth/user/login", formData, config);
+      console.log(data)
       // Store user's token in local storage
       localStorage.setItem("userInfo", JSON.stringify(data?.userDetails));
-
-      return data?.userDetails;
+     
+      return data;
     } catch (error) {
       // Return custom error message from the API if any
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      if (error.response && error.response.data.error) {
+        return rejectWithValue(error.response.data.error);
       }
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.error);
     }
   }
 );
@@ -91,7 +91,7 @@ const authSlice = createSlice({
       })
       .addCase(userLogin.rejected, (state, { payload }) => {
         state.loading = false;
-        state.error = payload;
+        state.error = payload?.error;
       });
   },
 });

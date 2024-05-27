@@ -10,7 +10,7 @@ const Navbar = ({ toggleModal }) => {
   };
 
   return (
-    <div className="flex flex-wrap h-screen">
+    <div className="flex flex-wrap">
       <section className="relative mx-auto">
         {/* Navbar */}
         <nav className="flex justify-between bg-gray-900 text-white w-screen">

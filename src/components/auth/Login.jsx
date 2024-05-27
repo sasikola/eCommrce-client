@@ -1,21 +1,34 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { userLogin } from "../../Redux/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = {
-      phoneNumber,
+      phone,
       password,
       rememberMe,
     };
-    console.log("Form Data Submitted: ", formData);
+
+    dispatch(userLogin(formData)).then((res) => {
+      if (!res.error) {
+        toast.success(res.payload.message);
+        navigate("/");
+      } else {
+        console.log(res)
+        toast.error(res.payload);
+      }
+    });
   };
 
   const toggleModal = () => {
@@ -82,8 +95,8 @@ const Login = () => {
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder="+1234567890"
                       required
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                   <div>
