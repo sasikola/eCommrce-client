@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createPopper } from "@popperjs/core";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/authSlice";
-import { toast } from "react-toastify";
+import { IoHomeOutline } from "react-icons/io5";
 
 const Navbar = ({ toggleModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,39 +40,43 @@ const Navbar = ({ toggleModal }) => {
         <section className="relative mx-auto">
           {/* Navbar */}
           <nav className="flex justify-between bg-gray-900 text-white w-screen">
-            <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-              <a className="text-3xl font-bold font-heading" href="# ">
+            <div className=" flex justify-between px-5 xl:px-12 py-6  w-full items-center">
+              <Link to="/" className="text-3xl font-bold font-heading">
                 {/* <img className="h-9" src="logo.png" alt="logo"> */}
                 MS
-              </a>
-              {/* Nav Links */}
-              <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                <li>
-                  <a className="hover:text-gray-200" href="# ">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-gray-200" href="# ">
-                    Category
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-gray-200" href=" #">
-                    Collections
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-gray-200" href="# ">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-              {/* Header Icons */}
+              </Link>
 
               {userInfo ? (
                 <>
                   <div className="hidden xl:flex items-center space-x-5">
+                    <div className="relative">
+                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg
+                          className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                          />
+                        </svg>
+                      </div>
+                      <input
+                        type="text"
+                        id="search-navbar"
+                        className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search..."
+                      />
+                    </div>
+                    <Link to="/">
+                      <IoHomeOutline size={23} />
+                    </Link>
                     <a className="hover:text-gray-200" href="# ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -169,6 +173,9 @@ const Navbar = ({ toggleModal }) => {
               ) : (
                 <>
                   <div className="hidden xl:flex items-center space-x-5">
+                    <Link to="/">
+                      <IoHomeOutline size={23} />
+                    </Link>
                     <a className="hover:text-gray-200" href="# ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -240,6 +247,11 @@ const Navbar = ({ toggleModal }) => {
               <>
                 <div className="md:hidden flex items-center">
                   <div className="flex items-center space-x-5 mr-4">
+                    {/* home */}
+                    <Link to="/">
+                      <IoHomeOutline size={23} />
+                    </Link>
+
                     <a className="hover:text-gray-200" href="# ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +291,6 @@ const Navbar = ({ toggleModal }) => {
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
                     </a>
-                    {/* Sign In / Register */}
                     <button
                       ref={buttonRef}
                       onClick={handleButtonClick}
@@ -330,26 +341,6 @@ const Navbar = ({ toggleModal }) => {
                         </div>
                       </div>
                     </div>
-
-                    <button
-                      onClick={toggleMenu}
-                      className="navbar-burger self-center"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 hover:text-gray-200"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4 6h16M4 12h16M4 18h16"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </div>
               </>
@@ -357,6 +348,9 @@ const Navbar = ({ toggleModal }) => {
               <>
                 <div className="md:hidden flex items-center">
                   <div className="flex items-center space-x-5 mr-4">
+                    <Link to="/">
+                      <IoHomeOutline size={23} />
+                    </Link>
                     <a className="hover:text-gray-200" href="# ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -419,7 +413,6 @@ const Navbar = ({ toggleModal }) => {
                         />
                       </svg>
                     </button>
-                    
                   </div>
                 </div>
               </>
