@@ -13,7 +13,11 @@ export const userRegister = createAsyncThunk(
         },
       };
       // Make request to the backend
-      const { data } = await RestApi.post("/auth/user/register", formData, config);
+      const { data } = await RestApi.post(
+        "/auth/user/register",
+        formData,
+        config
+      );
       return data;
     } catch (error) {
       // Return custom error message from the API if any
@@ -35,19 +39,27 @@ export const userLogin = createAsyncThunk(
           "Content-Type": "application/json",
         },
       };
+
       // Make request to the backend
-      const data  = await RestApi.post("/auth/user/login", formData, config);
-      console.log(data)
-      // Store user's token in local storage
-      localStorage.setItem("userInfo", JSON.stringify(data?.userDetails));
-     
+      const { data } = await RestApi.post("/auth/user/login", formData, config);
+      // Check if userDetails exist in the response data
+      if (data && data?.userDetails) {
+        // Store user's token in local storage
+        localStorage.setItem("userInfo", JSON.stringify(data?.userDetails));
+      } else {
+        console.warn("userDetails not found in the response data");
+      }
+
       return data;
     } catch (error) {
+      console.error("Error during login:", error);
+
       // Return custom error message from the API if any
       if (error.response && error.response.data.error) {
         return rejectWithValue(error.response.data.error);
       }
-      return rejectWithValue(error.error);
+
+      return rejectWithValue(error.message);
     }
   }
 );

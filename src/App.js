@@ -1,20 +1,18 @@
 // Import necessary components and styles
 import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { lazy, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./Pages/Home";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
-// Lazy load the Navbar component
-const Navbar = lazy(() => import("./components/Navbar"));
-const Home = lazy(() => import("./Pages/Home"));
-const Login = lazy(() => import("./components/auth/Login"));
-const Register = lazy(() => import("./components/auth/Register"));
+
 
 function App() {
-  // State to manage modal open/close
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to toggle modal state
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -37,7 +35,6 @@ function App() {
             element={<Login isOpen={isModalOpen} toggleModal={toggleModal} />}
           />
 
-          {/* Route for register page */}
           <Route
             path="/register"
             element={
