@@ -49,13 +49,11 @@ const Register = () => {
         >
           <div className="relative p-4 w-full max-w-md">
             <div
-              className="relative bg-white shadow dark:bg-gray-700"
-              style={{
-                animation: "fadeIn 0.3s ease-out",
-              }}
+              className="relative bg-white  "
+              style={{ animation: "fadeIn 0.3s ease-out" }}
             >
               <div className="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-gray-900 ">
                   Register to our platform
                 </h3>
                 <button
@@ -82,11 +80,14 @@ const Register = () => {
                 </button>
               </div>
               <div className="p-4">
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div>
+                <form
+                  className="bg-white px-8 pt-6 pb-8 mb-4"
+                  onSubmit={handleSubmit}
+                >
+                  <div className="mb-4">
                     <label
                       htmlFor="name"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block text-gray-700 text-sm font-bold mb-2"
                     >
                       Your name
                     </label>
@@ -94,17 +95,17 @@ const Register = () => {
                       type="text"
                       name="name"
                       id="name"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="John Doe"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-                  <div>
+                  <div className="mb-4">
                     <label
                       htmlFor="phone"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block text-gray-700 text-sm font-bold mb-2"
                     >
                       Your phone number
                     </label>
@@ -112,17 +113,17 @@ const Register = () => {
                       type="tel"
                       name="phone"
                       id="phone"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="123-456-7890"
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
-                  <div>
+                  <div className="mb-4">
                     <label
                       htmlFor="email"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block text-gray-700 text-sm font-bold mb-2"
                     >
                       Your email
                     </label>
@@ -130,17 +131,17 @@ const Register = () => {
                       type="email"
                       name="email"
                       id="email"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="name@company.com"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  <div>
+                  <div className="mb-6">
                     <label
                       htmlFor="password"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block text-gray-700 text-sm font-bold mb-2"
                     >
                       Your password
                     </label>
@@ -148,27 +149,33 @@ const Register = () => {
                       type="password"
                       name="password"
                       id="password"
+                      className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                       placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
+                    <p className="text-red-500 text-xs italic">
+                      Please enter your password.
+                    </p>
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Register your account
-                  </button>
-                  <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Already registered?{" "}
-                    <Link
-                      to="/login"
-                      className="text-blue-700 hover:underline dark:text-blue-500"
+                  <div>
+                    <button
+                      className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                      type="submit"
                     >
-                      Sign in
-                    </Link>
+                      Register your account
+                    </button>
+
+                    <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                      Already registered?{" "}
+                      <Link
+                        to="/login"
+                        className="text-blue-700 hover:underline dark:text-blue-500"
+                      >
+                        Sign in
+                      </Link>
+                    </div>
                   </div>
                 </form>
               </div>

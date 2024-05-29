@@ -7,8 +7,9 @@ import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-
-
+import Profile from "./Pages/Profile/Profile";
+import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import PublicRoutes from "./components/routes/PublicRoutes";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,13 +33,29 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={<Login isOpen={isModalOpen} toggleModal={toggleModal} />}
+            element={
+              <PublicRoutes>
+                <Login isOpen={isModalOpen} toggleModal={toggleModal} />
+              </PublicRoutes>
+            }
           />
 
           <Route
             path="/register"
             element={
-              <Register isOpen={isModalOpen} toggleModal={toggleModal} />
+              <PublicRoutes>
+                {" "}
+                <Register isOpen={isModalOpen} toggleModal={toggleModal} />
+              </PublicRoutes>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
             }
           />
         </Routes>

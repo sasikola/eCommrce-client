@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+  background-color: #f5f0f0;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
