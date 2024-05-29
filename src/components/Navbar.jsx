@@ -46,34 +46,37 @@ const Navbar = ({ toggleModal }) => {
                 MS
               </Link>
 
+              {/* search bar */}
+
+              <div className="relative hidden md:flex">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="search-navbar"
+                  className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search..."
+                />
+              </div>
+              {/* after login */}
               {userInfo ? (
                 <>
                   <div className="hidden xl:flex items-center space-x-5">
-                    <div className="relative">
-                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg
-                          className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                          />
-                        </svg>
-                      </div>
-                      <input
-                        type="text"
-                        id="search-navbar"
-                        className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search..."
-                      />
-                    </div>
                     <Link to="/">
                       <IoHomeOutline size={23} />
                     </Link>
@@ -116,62 +119,70 @@ const Navbar = ({ toggleModal }) => {
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
                     </a>
-
-                    <button
-                      ref={buttonRef}
-                      onClick={handleButtonClick}
-                      className="flex items-center hover:text-gray-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 hover:text-gray-200"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                    {/* POPOVER */}
+                    <div className="relative">
+                      <button
+                        ref={buttonRef}
+                        onClick={handleButtonClick}
+                        type="button"
+                        className="flex items-center hover:text-gray-200"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </button>
-                    {/* popover content */}
-                    <div data-popper-arrow></div>
-                    <div
-                      ref={popoverRef}
-                      className={`z-60 inline-block text-sm transition-opacity duration-500 bg-white border border-gray-200 shadow-sm ${
-                        isPopoverVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800`}
-                      role="tooltip"
-                      style={{ marginTop: "30px" }}
-                    >
-                      <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 dark:bg-gray-600">
-                        <p className="text-center font-semibold text-white text-2xl">
-                          {userInfo?.name}
-                        </p>
-                      </div>
-                      <div className="px-5 py-3 flex flex-col justify-start items-start">
-                        <Link to="/profile" className="px-3 py-3">
-                          Profile
-                        </Link>
-                        <div>
-                          <button
-                            onClick={handleLogout}
-                            className="py-1 px-2 mt-2"
-                          >
-                            Logout
-                          </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6 hover:text-gray-200"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        ref={popoverRef}
+                        className={`absolute w-auto z-60 inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 shadow-sm ${
+                          isPopoverVisible
+                            ? "opacity-100 visible"
+                            : "opacity-0 invisible"
+                        } dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800`}
+                        role="tooltip"
+                        style={{
+                          position: "absolute",
+                          top: "29px",
+                          right:"-48px"
+                        }}
+                      >
+                        <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 dark:bg-gray-600">
+                          <p className="text-center font-semibold text-white text-2xl">
+                            {userInfo?.name}
+                          </p>
                         </div>
+                        <div className="px-5 py-3 flex flex-col justify-start items-start">
+                          <Link to="/profile" className="px-3 py-3">
+                            Profile
+                          </Link>
+                          <div>
+                            <button
+                              onClick={handleLogout}
+                              className="py-1 px-2 mt-2"
+                            >
+                              Logout
+                            </button>
+                          </div>
+                        </div>
+
+                        <div data-popper-arrow></div>
                       </div>
                     </div>
                   </div>
                 </>
               ) : (
                 <>
+                  {/* before login */}
                   <div className="hidden xl:flex items-center space-x-5">
                     <Link to="/">
                       <IoHomeOutline size={23} />
