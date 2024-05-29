@@ -1,117 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="text-white body-font bg-black">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap md:text-left text-center order-first">
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a className=" text-white hover:text-white" href=" ">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-              ENQUIRY
-            </h2>
-            <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
-              <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
-                
-                <input
-                  type="text"
-                  id="footer-field"
-                  placeholder="Enter your email"
-                  name="footer-field"
-                  className="w-full  bg-opacity-50  border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 ">
-                Submit
-              </button>
-            </div>
-           
-          </div>
+      <div className="container px-5 py-6 mx-auto">
+       <div className="flex justify-center items-center">
+       <div className="flex flex-col items-start justify-center">
+          <Link>Products</Link>
+          <Link>Categories</Link>
+          <Link>Contact Us</Link>
         </div>
-        <div className="container px-5 mx-auto flex items-center sm:flex-row flex-col">
+       </div>
+        <div className="container px-5 mx-auto  items-center sm:flex-row flex-col flex">
           <p className="text-md text-white font-bold sm:ml-6 sm:mt-0 mt-4">
             © 2024 Mana Storez
           </p>
+
           {/* social media icons */}
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
             <a className="text-white" href=" ">
@@ -138,7 +43,10 @@ const Footer = () => {
                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
               </svg>
             </a>
-            <a className="ml-3 text-white" href="https://www.instagram.com/mr_sasi_03/">
+            <a
+              className="ml-3 text-white"
+              href="https://www.instagram.com/mr_sasi_03/"
+            >
               <svg
                 fill="none"
                 stroke="currentColor"
@@ -152,7 +60,10 @@ const Footer = () => {
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
               </svg>
             </a>
-            <a className="ml-3 text-white" href="https://www.linkedin.com/in/sasikiran-kola/">
+            <a
+              className="ml-3 text-white"
+              href="https://www.linkedin.com/in/sasikiran-kola/"
+            >
               <svg
                 fill="currentColor"
                 stroke="currentColor"
