@@ -14,10 +14,7 @@ const Navbar = ({ toggleModal }) => {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+  
   useEffect(() => {
     if (buttonRef.current && popoverRef.current) {
       createPopper(buttonRef.current, popoverRef.current, {
@@ -36,10 +33,10 @@ const Navbar = ({ toggleModal }) => {
 
   return (
     <>
-      <div className="flex flex-wrap">
-        <section className="relative mx-auto">
+      <div className="navbar flex flex-wrap">
+        <section className="mx-auto">
           {/* Navbar */}
-          <nav className="flex justify-between bg-gray-900 text-white w-screen">
+          <nav className=" flex justify-between bg-black text-white w-screen">
             <div className=" flex justify-between px-5 xl:px-12 py-6  w-full items-center">
               <Link to="/" className="text-3xl font-bold font-heading">
                 {/* <img className="h-9" src="logo.png" alt="logo"> */}

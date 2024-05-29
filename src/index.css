@@ -20,7 +20,7 @@ body{
 
 .carousel-image {
   width: 100%;
-  height: 580px;
+  height: 550px;
   object-fit: cover;
 }
 
@@ -28,4 +28,10 @@ body{
   .carousel-image {
     height: 320px;
   }
+}
+
+.navbar{
+  position: sticky;
+  top: 0px;
+  z-index: 999;
 }

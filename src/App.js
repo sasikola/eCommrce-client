@@ -10,6 +10,7 @@ import Profile from "./Pages/Profile/Profile";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import PublicRoutes from "./components/routes/PublicRoutes";
 import Home from "./Pages/HomePage/Home";
+import Footer from "./components/Footer";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,6 +60,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer/>
       </Router>
     </>
   );
