@@ -11,6 +11,7 @@ import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import PublicRoutes from "./components/routes/PublicRoutes";
 import Home from "./Pages/HomePage/Home";
 import Footer from "./components/Footer";
+import Products from "./Pages/Products/Products";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,8 +60,9 @@ function App() {
               </ProtectedRoutes>
             }
           />
+          <Route path="/products" element={<Products />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );
