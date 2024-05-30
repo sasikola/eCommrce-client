@@ -1,38 +1,30 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
 import Banners from "./Banners";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../Redux/productSlice";
+import AliceCarousel from "react-alice-carousel";
 
-const responsive = {
-  0: { items: 1 },
-  568: { items: 2 },
-  1024: { items: 3 },
-};
 const Home = () => {
-  const { productList, loading, error } = useSelector((state) => state.product);
+  const { productList } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 3 },
+  };
 
   const items =
     productList &&
-    productList?.slice(0, 6).map((product) => (
-      <div key={product.id} className="p-4 w-full">
+    productList.slice(0, 6).map((product) => (
+      <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
         <Link
           to={`/product/${product.id}`}
-          className="block relative h-48 overflow-hidden rounded"
+          className="block relative h-48  overflow-hidden"
         >
           <img
             alt="ecommerce"
@@ -41,6 +33,7 @@ const Home = () => {
           />
         </Link>
         <div className="mt-4">
+          {" "}
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
             {product.category}
           </h3>
@@ -54,7 +47,7 @@ const Home = () => {
             <div>
               <button
                 type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Add to Cart
               </button>
@@ -70,8 +63,8 @@ const Home = () => {
         <Banners />
       </div>
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex justify-between items-center mb-12">
+        <div className="container px-5 py-16 md:py-12 mx-auto">
+          <div className="flex justify-between items-center md:mb-10 mb-6">
             <h1 className="text-3xl font-medium title-font text-gray-900">
               Products
             </h1>
@@ -83,19 +76,22 @@ const Home = () => {
               <span className="hidden sm:block">View More Products</span>
             </Link>
           </div>
+          <div className="flex flex-wrap -m-4">
           <AliceCarousel
-            autoPlay
-            autoPlayStrategy="none"
-            autoPlayInterval={3000}
-            animationDuration={3000}
-            infinite
-            mouseTracking
-            items={items}
-            responsive={responsive}
-            controlsStrategy="alternate"
-          />
+          autoPlay
+          autoPlayStrategy="none"
+          autoPlayInterval={2000}
+          animationDuration={2000}
+          infinite
+          touchTracking={false}
+          disableDotsControls
+          disableButtonsControls
+          items={items}
+        />
+          </div>
         </div>
       </section>
+     
     </>
   );
 };
