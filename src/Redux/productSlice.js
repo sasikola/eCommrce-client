@@ -5,17 +5,15 @@ import RestApi from "../api/RestApi";
 // Async thunk for fetch all products
 export const getAllProducts = createAsyncThunk(
   "products/getAllProducts",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const { userInfo } = getState().auth;
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await RestApi.get("/user/allProducts", config);
-      return data?.products;
+      return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -53,8 +51,8 @@ const productSlice = createSlice({
   name: "product",
   initialState: {
     loading: false,
-    productList: [],
-    product: [],
+    productList: null,
+    product: null,
     error: null,
     success: null,
   },
