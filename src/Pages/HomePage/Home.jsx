@@ -8,6 +8,7 @@ import AliceCarousel from "react-alice-carousel";
 const Home = () => {
   const { productList } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  console.log(productList)
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -20,7 +21,7 @@ const Home = () => {
 
   const items =
     productList &&
-    productList.slice(0, 6).map((product) => (
+    productList.slice(0, 4).map((product) => (
       <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
         <Link
           to={`/product/${product.id}`}
@@ -47,7 +48,7 @@ const Home = () => {
             <div>
               <button
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                className="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Add to Cart
               </button>
@@ -77,21 +78,22 @@ const Home = () => {
             </Link>
           </div>
           <div className="flex flex-wrap -m-4">
-          <AliceCarousel
-          autoPlay
-          autoPlayStrategy="none"
-          autoPlayInterval={2000}
-          animationDuration={2000}
-          infinite
-          touchTracking={false}
-          disableDotsControls
-          disableButtonsControls
-          items={items}
-        />
+            {/* <AliceCarousel
+              autoPlay
+              autoPlayStrategy="none"
+              autoPlayInterval={2000}
+              animationDuration={2000}
+              responsive={responsive}
+              infinite
+              touchTracking={false}
+              disableDotsControls
+              disableButtonsControls
+              items={items}
+            /> */}
+            {items}
           </div>
         </div>
       </section>
-     
     </>
   );
 };
