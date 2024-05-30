@@ -17,14 +17,14 @@ function ProductDetails() {
   return (
     <>
       {product && (
-        <div className=" mx-24 my-10 ">
-          <div className="flex flex-col md:flex-row">
+        <div className="mx-3 md:mx-24 my-10 ">
+          <div className="flex ">
             <img
               src={product?.image}
               alt={product?.name}
-              className="w-full md:w-1/2 rounded-lg"
+              className="w-full md:w-1/2 "
             />
-            <div className="md:ml-10">
+            <div className="md:ml-10 ml-4">
               <h1 className="text-3xl font-bold mb-2">{product?.name}</h1>
               <p className="text-xl text-gray-800 mb-4">₹{product?.price}</p>
               <p className="text-gray-600">{product?.description}</p>
