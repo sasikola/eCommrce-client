@@ -2,29 +2,28 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Banners from "./Banners";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../Redux/productSlice";
-import AliceCarousel from "react-alice-carousel";
+import { getAllProducts, getSingleProduct } from "../../Redux/productSlice";
+// import AliceCarousel from "react-alice-carousel";
 
 const Home = () => {
   const { productList } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  console.log(productList)
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  const responsive = {
-    0: { items: 1 },
-    568: { items: 2 },
-    1024: { items: 3 },
-  };
+  // const responsive = {
+  //   0: { items: 1 },
+  //   568: { items: 2 },
+  //   1024: { items: 3 },
+  // };
 
   const items =
     productList &&
     productList.slice(0, 4).map((product) => (
-      <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
+      <div key={product._id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
         <Link
-          to={`/product/${product.id}`}
+          to={`/product/${product._id}`}
           className="block relative h-48  overflow-hidden"
         >
           <img

@@ -36,7 +36,7 @@ export const getSingleProduct = createAsyncThunk(
         },
       };
       const { data } = await RestApi.get(`/user/singleProduct/${id}`, config);
-      return data?.product;
+      return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);

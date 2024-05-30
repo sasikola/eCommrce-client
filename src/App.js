@@ -12,6 +12,7 @@ import PublicRoutes from "./components/routes/PublicRoutes";
 import Home from "./Pages/HomePage/Home";
 import Footer from "./components/Footer";
 import Products from "./Pages/Products/Products";
+import ProductDetails from "./Pages/Products/ProductDetails";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,6 +62,7 @@ function App() {
             }
           />
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
         <Footer />
       </Router>
