@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className="text-white body-font bg-black">
       <div className="container px-5 py-6 mx-auto">
-       <div className="flex justify-center items-center">
-       <div className="flex flex-col items-start justify-center">
-          <Link>Products</Link>
-          <Link>Categories</Link>
-          <Link>Contact Us</Link>
+        <div className="flex justify-center items-center">
+          <div className="flex flex-col items-start justify-center">
+            <Link to="/products">Products</Link>
+            <Link>Categories</Link>
+            <Link>Contact Us</Link>
+          </div>
         </div>
-       </div>
         <div className="container px-5 mx-auto  items-center sm:flex-row flex-col flex">
           <p className="text-md text-white font-bold sm:ml-6 sm:mt-0 mt-4">
             © 2024 Mana Storez
