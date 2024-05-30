@@ -17,7 +17,7 @@ function ProductDetails() {
   return (
     <>
       {product && (
-        <div className="mx-3 md:mx-24 my-10 ">
+        <div className="mx-3 md:mx-16 my-10 bg-white md:bg-transparent p-2 ">
           <div className="flex ">
             <img
               src={product?.image}
