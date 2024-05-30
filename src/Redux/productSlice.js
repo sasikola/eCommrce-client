@@ -26,13 +26,12 @@ export const getAllProducts = createAsyncThunk(
 // async thunk for fetch single product
 export const getSingleProduct = createAsyncThunk(
   "products/getSingleProduct",
-  async (id, { getState, rejectWithValue }) => {
+  async (id, {  rejectWithValue }) => {
     try {
-      const { userInfo } = getState().auth;
+      
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await RestApi.get(`/user/singleProduct/${id}`, config);
