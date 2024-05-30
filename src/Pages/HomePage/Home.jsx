@@ -40,7 +40,7 @@ const Home = () => {
         <Banners />
       </div>
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-16 md:py-12 mx-auto">
           <div className="flex justify-between items-center md:mb-10 mb-6">
             <h1 className="text-3xl font-medium title-font text-gray-900">
               Products
