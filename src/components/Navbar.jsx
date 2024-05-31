@@ -4,6 +4,7 @@ import { createPopper } from "@popperjs/core";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/authSlice";
 import { IoHomeOutline } from "react-icons/io5";
+import { getCartItems } from "../Redux/cartSlice";
 
 const Navbar = ({ toggleModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ const Navbar = ({ toggleModal }) => {
   const buttonRef = useRef(null);
   const popoverRef = useRef(null);
   const { userInfo } = useSelector((state) => state.auth);
+  const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +22,8 @@ const Navbar = ({ toggleModal }) => {
         placement: "bottom",
       });
     }
-  }, [isPopoverVisible]);
+    dispatch(getCartItems());
+  }, [isPopoverVisible, dispatch]);
 
   const handleButtonClick = () => {
     setIsPopoverVisible((prev) => !prev);
@@ -110,10 +113,20 @@ const Navbar = ({ toggleModal }) => {
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                       </svg>
-                      <span className="flex absolute -mt-5 ml-4">
-                        <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                      </span>
+                      {cart.length > 0 ? (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="bg-red-500 text-white px-2 py-1 rounded-full text-[10px]">
+                            {cart.length}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+                            {" "}
+                          </span>
+                        </span>
+                      )}
                     </Link>
                     {/* POPOVER */}
                     <div className="relative">
@@ -217,10 +230,20 @@ const Navbar = ({ toggleModal }) => {
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                       </svg>
-                      <span className="flex absolute -mt-5 ml-4">
-                        <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                      </span>
+                      {cart.length > 0 ? (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="bg-red-500 text-white px-2 py-1 rounded-full text-[10px]">
+                            {cart.length}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+                            {" "}
+                          </span>
+                        </span>
+                      )}
                     </Link>
 
                     <button
@@ -294,10 +317,20 @@ const Navbar = ({ toggleModal }) => {
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                       </svg>
-                      <span className="flex absolute -mt-5 ml-4">
-                        <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                      </span>
+                      {cart.length > 0 ? (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="bg-red-500 text-white px-2 py-1 rounded-full text-[10px]">
+                            {cart.length}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+                            {" "}
+                          </span>
+                        </span>
+                      )}
                     </Link>
                     <button
                       ref={buttonRef}
@@ -394,10 +427,20 @@ const Navbar = ({ toggleModal }) => {
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                       </svg>
-                      <span className="flex absolute -mt-5 ml-4">
-                        <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                      </span>
+                      {cart.length > 0 ? (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="bg-red-500 text-white px-2 py-1 rounded-full text-[10px]">
+                            {cart.length}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex absolute -mt-5 ml-4">
+                          <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+                            {" "}
+                          </span>
+                        </span>
+                      )}
                     </Link>
                     {/* Sign In / Register */}
                     <button
