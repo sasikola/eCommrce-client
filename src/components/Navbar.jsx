@@ -14,7 +14,6 @@ const Navbar = ({ toggleModal }) => {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     if (buttonRef.current && popoverRef.current) {
       createPopper(buttonRef.current, popoverRef.current, {
@@ -77,7 +76,7 @@ const Navbar = ({ toggleModal }) => {
                     <Link to="/">
                       <IoHomeOutline size={23} />
                     </Link>
-                    <a className="hover:text-gray-200" href="# ">
+                    <Link className="hover:text-gray-200">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -92,10 +91,10 @@ const Navbar = ({ toggleModal }) => {
                           d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                         />
                       </svg>
-                    </a>
-                    <a
+                    </Link>
+                    <Link
+                      to="/cart"
                       className="flex items-center hover:text-gray-200"
-                      href=" #"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +114,7 @@ const Navbar = ({ toggleModal }) => {
                         <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
-                    </a>
+                    </Link>
                     {/* POPOVER */}
                     <div className="relative">
                       <button
@@ -150,7 +149,7 @@ const Navbar = ({ toggleModal }) => {
                         style={{
                           position: "absolute",
                           top: "29px",
-                          right:"-48px"
+                          right: "-48px",
                         }}
                       >
                         <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 dark:bg-gray-600">
@@ -200,9 +199,9 @@ const Navbar = ({ toggleModal }) => {
                         />
                       </svg>
                     </a>
-                    <a
+                    <Link
+                      to="/cart"
                       className="flex items-center hover:text-gray-200"
-                      href=" #"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +221,7 @@ const Navbar = ({ toggleModal }) => {
                         <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
-                    </a>
+                    </Link>
 
                     <button
                       onClick={() => {
@@ -276,7 +275,8 @@ const Navbar = ({ toggleModal }) => {
                         />
                       </svg>
                     </a>
-                    <a
+                    <Link
+                      to="/cart"
                       className="flex items-center hover:text-gray-200"
                       href=" #"
                     >
@@ -298,7 +298,7 @@ const Navbar = ({ toggleModal }) => {
                         <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
-                    </a>
+                    </Link>
                     <button
                       ref={buttonRef}
                       onClick={handleButtonClick}
@@ -375,7 +375,8 @@ const Navbar = ({ toggleModal }) => {
                         />
                       </svg>
                     </a>
-                    <a
+                    <Link
+                      to="/cart"
                       className="flex items-center hover:text-gray-200"
                       href=" #"
                     >
@@ -397,7 +398,7 @@ const Navbar = ({ toggleModal }) => {
                         <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
                       </span>
-                    </a>
+                    </Link>
                     {/* Sign In / Register */}
                     <button
                       onClick={() => {

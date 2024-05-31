@@ -13,6 +13,7 @@ import Home from "./Pages/HomePage/Home";
 import Footer from "./components/Footer";
 import Products from "./Pages/Products/Products";
 import ProductDetails from "./Pages/Products/ProductDetails";
+import Cart from "./Pages/Cart/Cart";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,6 +59,14 @@ function App() {
             element={
               <ProtectedRoutes>
                 <Profile />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoutes>
+                <Cart />
               </ProtectedRoutes>
             }
           />

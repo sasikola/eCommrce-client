@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Banners from "./Banners";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, getSingleProduct } from "../../Redux/productSlice";
+import { addToCart } from "../../Redux/cartSlice";
+import { toast } from "react-toastify";
 // import AliceCarousel from "react-alice-carousel";
 
 const Home = () => {
@@ -17,6 +19,18 @@ const Home = () => {
   //   568: { items: 2 },
   //   1024: { items: 3 },
   // };
+
+  const cartHandler = (productId) => {
+    dispatch(addToCart({ productId: productId, quantity: 2 })).then((res) => {
+      if (!res.error) {
+        console.log(res);
+        toast.success(res.payload);
+      } else {
+        console.log(res);
+        toast.error(res.payload);
+      }
+    });
+  };
 
   const items =
     productList &&
@@ -46,6 +60,7 @@ const Home = () => {
               </div>
               <div>
                 <button
+                  onClick={() => cartHandler(product._id)}
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 >
