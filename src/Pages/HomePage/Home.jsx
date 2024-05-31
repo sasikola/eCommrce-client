@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Banners from "./Banners";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, getSingleProduct } from "../../Redux/productSlice";
+import { getAllProducts } from "../../Redux/productSlice";
 import { addToCart } from "../../Redux/cartSlice";
 import { toast } from "react-toastify";
 // import AliceCarousel from "react-alice-carousel";
@@ -23,7 +23,6 @@ const Home = () => {
   const cartHandler = (productId) => {
     dispatch(addToCart({ productId: productId, quantity: 2 })).then((res) => {
       if (!res.error) {
-        console.log(res);
         toast.success(res.payload);
       } else {
         console.log(res);

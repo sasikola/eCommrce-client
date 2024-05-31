@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProducts, getSingleProduct } from "../../Redux/productSlice";
+import { addToCart } from "../../Redux/cartSlice";
+import { toast } from "react-toastify";
 
 const Products = () => {
   const { productList, loading, error } = useSelector((state) => state.product);
@@ -17,6 +19,16 @@ const Products = () => {
     return <div>Error: {error.message}</div>;
   }
 
+  const cartHandler = (productId) => {
+    dispatch(addToCart({ productId: productId, quantity: 2 })).then((res) => {
+      if (!res.error) {
+        toast.success(res.payload);
+      } else {
+        console.log(res);
+        toast.error(res.payload);
+      }
+    });
+  };
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -30,7 +42,7 @@ const Products = () => {
                 <div key={product._id} className="lg:w-1/4 md:w-1/2 p-2 w-full">
                   <div className="bg-white p-3 shadow-lg">
                     <Link
-                     to={`/product/${product._id}`}
+                      to={`/product/${product._id}`}
                       className="block relative h-48 overflow-hidden rounded"
                     >
                       <img
@@ -52,6 +64,7 @@ const Products = () => {
                         </div>
                         <div>
                           <button
+                            onClick={() => cartHandler(product._id)}
                             type="button"
                             className="text-white bg-blue-700 hover:bg-blue-800 font-medium text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                           >
